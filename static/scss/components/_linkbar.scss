@@ -1,0 +1,16 @@
+.linkbar {
+  padding-bottom: 16px;
+  background-image: url("/static/img/line-menu.png");
+  background-repeat: no-repeat;
+  background-repeat: repeat-x;
+  background-position: bottom left;
+  background-size: 50%;
+
+  @media (max-width: 800px) {
+    padding: 16px 32px 32px 32px;
+    background-image: url("/static/img/topbar-bg.png");
+    background-repeat: repeat-x;
+    background-position: bottom left;
+    background-size: cover;
+  }
+}

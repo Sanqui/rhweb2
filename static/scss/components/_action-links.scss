@@ -1,0 +1,39 @@
+.action-links {
+  margin: 8px 0 20px 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    width: 180px;
+    margin: 0;
+    margin-right: 8px;
+    padding: 0;
+
+    a {
+      font-size: 11pt;
+      font-weight: bold;
+      display: bold;
+      display: block;
+      text-align: center;
+      color: $color-accent;
+
+      &:hover {
+        padding-bottom: 0;
+        background: none;
+      }
+
+      img {
+        display: block;
+        max-width: 68px;
+        max-height: 68px;
+        margin: 4px auto 8px auto;
+      }
+    }
+  }
+
+  &-small {
+    li {
+      width: 100px;
+    }
+  }
+}

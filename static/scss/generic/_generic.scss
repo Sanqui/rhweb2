@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: $font-heading;
+  font-size: 44pt;
+
+  a,
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+h2 {
+  font-family: $font-heading;
+  font-size: 35pt;
+  margin-top: .9em;
+  color: $color-accent;
+}
+
+h3 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+
+  &:first {
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $color-light;
+
+  &:hover,
+  p & {
+    text-decoration: underline;
+  }
+}
+
+p {
+  font-size: 11pt;
+  line-height: 1.75;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+ul {
+  margin-left: 1.2em;
+}
+
+li {
+  padding-left: .5em;
+}
+
+blockquote {
+  margin-top: 26px;
+  margin-bottom: 12px;
+
+  &:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    content: "";
+    background-image: url("/static/img/quot-left.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &:after {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    content: "";
+    background-image: url("/static/img/quot-right.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}

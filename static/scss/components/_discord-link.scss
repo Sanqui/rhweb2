@@ -1,0 +1,11 @@
+.discord-link {
+  font-size: 14px;
+  display: block;
+  width: 240px;
+  height: 50px;
+  margin: 32px auto 8px auto;
+  border: 10px solid $color-accent;
+  border-image: url("/static/img/button1.svg") 10 10 round;
+  background-color: $color-accent;
+  background-clip: padding-box;
+}

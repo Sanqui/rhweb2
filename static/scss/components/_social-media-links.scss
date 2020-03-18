@@ -1,0 +1,22 @@
+.social-media-links {
+  float: right;
+  margin: 6px 0 0 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    margin-right: 8px;
+
+    a {
+      display: block;
+      overflow: hidden;
+      max-width: 32px;
+      height: 32px;
+      text-indent: -999px;
+      color: $color-dark;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}

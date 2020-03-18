@@ -1,0 +1,42 @@
+.page-links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-family: $font-heading;
+    font-size: 24pt;
+    display: inline-block;
+    margin: 0;
+    margin-right: 32px;
+    padding: 0;
+
+    @media (max-width: 400px) {
+      font-size: 21pt;
+    }
+
+    footer & {
+      font-size: 18pt;
+      margin-bottom: 12px;
+    }
+  }
+
+  a {
+    &:hover {
+      padding-bottom: 3px;
+      text-decoration: none;
+      background-image: url("/static/img/line-a.png");
+      background-repeat: repeat-x;
+      background-position: bottom left;
+    }
+  }
+}
+
+.mobile-link {
+  display: none;
+
+  @media (max-width: 800px) {
+    font-size: 20pt;
+    display: inline-block;
+  }
+}

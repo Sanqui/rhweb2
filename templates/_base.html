@@ -3,129 +3,166 @@
 -%}
 <!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="google-site-verification" content="dHBxJL8auRX0ESAji5RdnuBeE9Oa_QHu1KZBqKbddEY" />
-    
-        <title>RetroHerna
-            {% if g.pagetitle %}
-                 - {{ g.pagetitle }}
-            {% else %}
-                - RHFórum - 
-                {% block title %}
-                {% endblock %}
-            {% endif %}</title>
-    
-    <meta property="og:title" content="RetroHerna{% if g.pagetitle %} - {{ g.pagetitle }}{%endif%}">
-    {% if g.pagedescription %}
-        <meta property="og:description" content="{{g.pagedescription}}">
-        <meta name="description" content="{{g.pagedescription}}">
-    {% endif %}
-    {% if path == "index" %}
-        <meta property="og:image" content="/static/banner.png">
-    {% else %}
-        <meta property="og:image" content="/static/banner_square.png">
-    {% endif %}
-    <meta property="og:type" content="website">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/static/favicon.png">
-    <link rel="stylesheet" href="/static/style.css">  
-    <link rel="stylesheet" href="/static/style_forum.css">    
-    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&amp;subset=latin-ext" rel="stylesheet">
-</head>
-<body>
-    <div class="sidebar">
-        <!--<h1>RetroHerna</h1>-->
-        <h1>
-            <a href="/">
-                <img src="/static/img/logo.png" alt="RetroHerna"
-                class="logo" width="200"></a>
-                <br />
-            RetroHerna
-        </h1>
-        
-        {% block forum_sidebar %}
-        {% endblock %}
-        
-        {{ g.sidebar | safe }}
-        
-        <a class="discord-link" href="{{urls.discord}}">
-            <div class="icon-discord"></div>
-            Pokecej si na Discordu
-        </a>
-    </div>
-    <div class="primary">
-        <div class="linkbar">
-            <ul class="social-media-links">
-                <li><a href="{{urls.facebook}}" class="icon-facebook">Facebook</a>
-                <li><a href="{{urls.twitter}}" class="icon-twitter">Twitter</a>
-                <li><a href="{{urls.youtube}}" class="icon-youtube">YouTube</a>
-                <li><a href="{{urls.instagram}}" class="icon-instagram">Instagram</a>
-            </ul>
-            <h1 class="mobile-logo">
-                <a href="/">
-                    <img src="/static/img/logo.png" height=90 alt="">
-                    RetroHerna
-                </a>
-            </h1>
-            {% macro basic_links() %}
-                <li><a href="/">O projektu</a>
-                <li><a href="/vyjezdy">Výjezdy</a>
-                <li><a href="/komunita">Komunita</a>
-                <li><a href="/clanky">Články</a>
-                <li><a href="/kontakt">Kontakt</a>
-            {% endmacro %}
-            <ul class="page-links">
-                {{ basic_links() }}
-                <!--
-                <li class="mobile-link"><a href="#">Novinky</a>
-                <li class="mobile-link"><a href="#">Nadcházející akce</a>-->
-            </ul>
-            <div class="clearright"></div>
-        </div>
-        <div class="main">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <footer>
-            <ul class="page-links">
-                <!--{{ basic_links() }}-->
-                <li>RetroHerna je projektem <a href="{{urls.hernihistorie}}">Herní historie, z.s.</a>
-                <li><a href="/zasady-ochrany-soukromi">Zásady ochrany soukromí</a>
-            </ul>
-            <!--div class="copyright">RetroHerna je projektem Herní historie, z.s.</div-->
-        </footer>
-    </div>
-    <div class="clear"></div>
-    <!-- caching_comment :
-        {{ g.caching_comment }}
-    -->
-<!-- Piwik -->
-<script type="text/javascript">
-  var _paq = _paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://sanqui.net/piwik/";
-    _paq.push(['setTrackerUrl', u+'bananas.php']);
-    _paq.push(['setSiteId', 4]);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
-    g.defer=true; g.async=true; g.src=u+'bananas.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-<noscript><p><img src="https://sanqui.net/piwik/bananas.php?idsite=4" style="border:0;" alt="" /></p></noscript>
-<!-- End Piwik Code -->
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	<head>
+		<meta charset="utf-8">
+		<meta name="google-site-verification" content="dHBxJL8auRX0ESAji5RdnuBeE9Oa_QHu1KZBqKbddEY"/>
 
-  ga('create', 'UA-78660493-1', 'auto');
-  ga('send', 'pageview');
+		<title>RetroHerna
+			{% if g.pagetitle %}
+				-
+				{{ g.pagetitle }}
+			{% else %}
+				- RHFórum -
+				{% block title %}{% endblock %}
+			{% endif %}
+		</title>
 
-</script>
+		<meta property="og:title" content="RetroHerna{% if g.pagetitle %} - {{ g.pagetitle }}{%endif%}">
+		{% if g.pagedescription %}
+			<meta property="og:description" content="{{g.pagedescription}}">
+			<meta name="description" content="{{g.pagedescription}}">
+		{% endif %}
+		{% if path == "index" %}
+			<meta property="og:image" content="/static/banner.png">
+		{% else %}
+			<meta property="og:image" content="/static/banner_square.png">
+		{% endif %}
+		<meta property="og:type" content="website">
 
-</body>
-</html>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="/static/favicon.png">
+		<link rel="stylesheet" href="/static/css/style.min.css">
+		<link rel="stylesheet" href="/static/style_forum.css">
+		<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Open+Sans:400,400i,700,700i&display=swap&subset=latin-ext" rel="stylesheet">
+	</head>
+	<body>
+		<div
+			class="sidebar">
+			<!--<h1>RetroHerna</h1>-->
+			<h1>
+				<a href="/">
+					<img src="/static/img/logo.png" alt="RetroHerna" class="logo" width="200"></a>
+				<br/>
+				RetroHerna
+			</h1>
+
+			{% block forum_sidebar %}{% endblock %}
+
+			{{ g.sidebar | safe }}
+
+			<a class="discord-link" href="{{urls.discord}}">
+				<div class="icon-discord"></div>
+				Pokecej si na Discordu
+			</a>
+		</div>
+		<div class="primary">
+			<div class="linkbar">
+				<ul class="social-media-links">
+					<li>
+						<a href="{{urls.facebook}}" class="icon-facebook">Facebook</a>
+					</li>
+					<li>
+						<a href="{{urls.twitter}}" class="icon-twitter">Twitter</a>
+					</li>
+					<li>
+						<a href="{{urls.youtube}}" class="icon-youtube">YouTube</a>
+					</li>
+					<li>
+						<a href="{{urls.instagram}}" class="icon-instagram">Instagram</a>
+					</li>
+				</ul>
+				<h1 class="mobile-logo">
+					<a href="/">
+						<img src="/static/img/logo.png" height="90" alt="">
+						RetroHerna
+					</a>
+				</h1>
+				{% macro basic_links() %}
+					<li>
+						<a href="/">O projektu</a>
+					</li>
+					<li>
+						<a href="/vyjezdy">Výjezdy</a>
+					</li>
+					<li>
+						<a href="/komunita">Komunita</a>
+					</li>
+					<li>
+						<a href="/clanky">Články</a>
+					</li>
+					<li>
+						<a href="/kontakt">Kontakt</a>
+					{% endmacro %}
+					<ul class="page-links">
+						{{ basic_links() }}
+						<!--
+            <li class="mobile-link"><a href="#">Novinky</a>
+            <li class="mobile-link"><a href="#">Nadcházející akce</a>-->
+					</ul>
+					<div class="clearright"></div>
+				</div>
+				<div class="main"> {% block content %}{% endblock %}
+					</div>
+					<footer>
+						<ul
+							class="page-links">
+							<!--{{ basic_links() }}-->
+							<li>RetroHerna je projektem
+								<a href="{{urls.hernihistorie}}">Herní historie, z.s.</a>
+							</li>
+							<li>
+								<a href="/zasady-ochrany-soukromi">Zásady ochrany soukromí</a>
+							</li>
+						</ul>
+						<!--div class="copyright">RetroHerna je projektem Herní historie, z.s.</div-->
+					</footer>
+				</div>
+				<!-- caching_comment :
+            {{ g.caching_comment }}
+        -->
+				<!-- Piwik -->
+				<script type="text/javascript">
+					var _paq = _paq || [];
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function () {
+          var u = (("https:" == document.location.protocol) ? "https" : "http") + "://sanqui.net/piwik/";
+          _paq.push([
+          'setTrackerUrl',
+          u + 'bananas.php'
+          ]);
+          _paq.push(['setSiteId', 4]);
+          var d = document,
+          g = d.createElement('script'),
+          s = d.getElementsByTagName('script')[0];
+          g.type = 'text/javascript';
+          g.defer = true;
+          g.async = true;
+          g.src = u + 'bananas.js';
+          s.parentNode.insertBefore(g, s);
+          })();
+        </script>
+        <noscript>
+          <p><img src="https://sanqui.net/piwik/bananas.php?idsite=4" style="border:0;" alt=""/></p>
+        </noscript>
+        <!-- End Piwik Code -->
+        <script>
+          (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+          },
+          i[r].l = 1 * new Date();
+          a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+          })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+          ga('create', 'UA-78660493-1', 'auto');
+          ga('send', 'pageview');
+				</script>
+			</body>
+		</body>
+	</html>

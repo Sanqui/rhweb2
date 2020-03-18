@@ -1,0 +1,31 @@
+.icon {
+  &-facebook {
+    width: 24px;
+    background-image: url("/static/img/icons/facebook.png");
+  }
+
+  &-twitter {
+    width: 36px;
+    background-image: url("/static/img/icons/twitter.png");
+  }
+
+  &-youtube {
+    width: 36px;
+    background-image: url("/static/img/icons/youtube.png");
+  }
+
+  &-instagram {
+    width: 36px;
+    background-image: url("/static/img/icons/instagram.png");
+  }
+
+  &-discord {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+    background-image: url("/static/img/icons/discord.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
