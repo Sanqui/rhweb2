@@ -3,7 +3,7 @@
     new_icon with context -%}
 {% extends '_base.html' %}
 
-{% block forum_sidebar %}
+{% macro forum_sidebar() %}
     <h2 class="rhforum-title"><a href="{{url_for('.index')}}">RHForum</a></h2>
     {% if g.user %}
         Přihlášen/a za <a href="{{g.user.url}}">{{g.user.name}}</a> &bull;
@@ -12,10 +12,17 @@
         <a href="{{url_for('.login')}}">Přihlásit se</a> &bull;
         <a href="{{url_for('.register')}}">Registrovat</a>
     {% endif %}
+{% endmacro %}
+
+{% block forum_sidebar %}
+    {{ forum_sidebar() }}
 {% endblock %}
 
 {% block content %}
 <!--    <title>RHforum » {% block title %}{% endblock %}</title> -->
+    <div class="forum-sidebar-mobile">
+        {{ forum_sidebar() }}
+    </div>
     <script>
         window.onload = function(){
             Array.prototype.forEach.call(document.getElementsByClassName('delete-button'), function(el) {

@@ -216,6 +216,10 @@ a.permalink:hover {text-decoration: underline;}
 
 .inline {display: inline;}
 
+.forum-sidebar-mobile {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .container {width: 98%; margin: auto; padding: 8px; margin-top: 34px;}
     
@@ -232,6 +236,10 @@ a.permalink:hover {text-decoration: underline;}
         width: 150px; }
         
     .post-text textarea {width: calc(100% - 160px);}
+
+    .forum-sidebar-mobile {
+        display: block;
+    }
         
 }
 @media (max-width: 600px) {
