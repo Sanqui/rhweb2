@@ -466,10 +466,10 @@ def register():
             
             g.telegram_messages.append("Nová registrace: *{}* (login *{}*, email {}): {}".format(
                 user.fullname, user.login, user.email, BASE_URL+user.url))
-            g.irc_messages.append("Nová registrace: \x0302{}\x03 (login \x0208{}\x03, email {}): {}".format(
-                user.fullname, user.login, user.email, BASE_URL+user.url))
-            #g.discord_messages.append("Nová registrace: **{}** (login **{}**, email {}): {}".format(
+            #g.irc_messages.append("Nová registrace: \x0302{}\x03 (login \x0208{}\x03, email {}): {}".format(
             #    user.fullname, user.login, user.email, BASE_URL+user.url))
+            g.discord_messages.append("Nová registrace: **{}** (login **{}**, email {}): {}".format(
+                user.fullname, user.login, user.email, BASE_URL+user.url))
             
             g.user = user
             g.user.read_all()
@@ -510,11 +510,11 @@ def forum(forum_id, forum_identifier=None):
             db.session.commit()
             g.telegram_messages.append("Nové téma od *{}*: *{}*: {}".format(
                 thread.author.name, thread.name, BASE_URL+thread.short_url))
-            if (not forum.category) or (not forum.category.group): # TODO should may report user too 
+            if not forum.category or forum.category.group.name == "extern":
                 g.discord_messages.append("Nové téma od **{}**: **{}**: {}".format(
                     thread.author.name, thread.name, BASE_URL+thread.short_url))
-                g.irc_messages.append("Nové téma od \x0302{}\x03: \x0306{}\x03: {}".format(
-                    thread.author.name, thread.name, BASE_URL+thread.short_url))
+            #    g.irc_messages.append("Nové téma od \x0302{}\x03: \x0306{}\x03: {}".format(
+            #        thread.author.name, thread.name, BASE_URL+thread.short_url))
             return redirect(thread.url)
     return render_template("forum/forum.html", forum=forum, threads=threads, form=form)
 
@@ -577,11 +577,11 @@ def thread(forum_id, thread_id, forum_identifier=None, thread_identifier=None):
             db.session.commit()
             g.telegram_messages.append("Nový příspěvek od *{}* do *{}*: {}".format(
                 post.author.name, post.thread.name, BASE_URL+post.short_url))
-            if (not thread.forum.category) or (not thread.forum.category.group): # TODO should may report user too 
+            if not forum.category or forum.category.group.name == "extern":
                 g.discord_messages.append("Nový příspěvek od **{}** do **{}**: {}".format(
                     post.author.name, post.thread.name, BASE_URL+post.short_url))
-                g.irc_messages.append("Nový příspěvek od \x0302{}\x03 do \x0306{}\x03: {}".format(
-                    post.author.name, post.thread.name, BASE_URL+post.short_url))
+            #    g.irc_messages.append("Nový příspěvek od \x0302{}\x03 do \x0306{}\x03: {}".format(
+            #        post.author.name, post.thread.name, BASE_URL+post.short_url))
             return redirect(thread.url+"#post-latest") # TODO id
     
     if g.user:
