@@ -58,7 +58,6 @@ def wikipage(name, force=False):
 
 def transform_wikipage(page):
     page = page.replace("~CLEAR~", '<div style="clear: both;"></div>')
-    page = page.replace("retroherna.cz", "retroherna.org")
     page = BeautifulSoup(page, "lxml")
     for a in page.find_all('a'):
         if a.get('href') and "/wiki/doku.php" in a['href']:

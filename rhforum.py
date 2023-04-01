@@ -107,7 +107,6 @@ cleaner = Cleaner(comments=False, style=False, embedded=False, annoying_tags=Fal
 
 @rhforum.app_template_filter('postfilter')
 def postfilter(text):
-    text = text.replace("retroherna.cz", "retroherna.org")
     return text
 
 @rhforum.app_template_filter('clean')
